@@ -4,4 +4,6 @@
     <!--Bottom menu-->
     <string name="search">Search</string>
     <string name="favorites">Favorites</string>
+
+    <string name="search_count">search count : %s</string>
 </resources>

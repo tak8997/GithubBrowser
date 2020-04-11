@@ -13,5 +13,6 @@ internal class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewMo
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
     }
 }

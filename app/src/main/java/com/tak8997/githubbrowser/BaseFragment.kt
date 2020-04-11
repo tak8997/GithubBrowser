@@ -30,6 +30,7 @@ internal abstract class BaseFragment<VB: ViewDataBinding, VM: ViewModel> : Dagge
     ): View? {
         binding = DataBindingUtil.inflate(inflater, getLayoutRes(), container, false)
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.setVariable(BR.viewModel, viewModel)
 
         return binding.root
     }
