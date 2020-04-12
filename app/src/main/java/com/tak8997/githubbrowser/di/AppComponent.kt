@@ -11,6 +11,8 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = [
     AndroidSupportInjectionModule::class,
+    ActivityBindingModule::class,
+    NetworkModule::class,
     AppModule::class
 ])
 internal interface AppComponent : AndroidInjector<GithubBrowserApp> {

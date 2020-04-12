@@ -1,4 +1,4 @@
-package com.tak8997.instastylegallery.di
+package com.tak8997.githubbrowser.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -24,7 +24,3 @@ class GithubBrowserViewModelFactory @Inject constructor(
         }
     }
 }
-
-@Retention(AnnotationRetention.RUNTIME)
-@MapKey
-annotation class ViewModelKey(val value: KClass<out ViewModel>)
