@@ -20,9 +20,6 @@ abstract class BaseActivity<VB : ViewDataBinding, VM : ViewModel>: DaggerAppComp
     lateinit var binding: VB
     lateinit var viewModel: VM
 
-    @Inject
-    lateinit var supportFragmentInjector: DispatchingAndroidInjector<Fragment>
-
     private var lastClickTime = 0L
 
     @LayoutRes
