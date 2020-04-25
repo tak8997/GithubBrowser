@@ -1,12 +1,14 @@
 package com.tak8997.githubbrowser.di
 
 import com.facebook.stetho.okhttp3.StethoInterceptor
+import com.tak8997.githubbrowser.data.ResultCallAdapterFactory
 import com.tak8997.githubbrowser.data.apiservice.GitHubApiService
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module(includes = [NetworkModule.ProvideModule::class])
@@ -37,6 +39,8 @@ internal class NetworkModule {
             return Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(okHttpClient)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(ResultCallAdapterFactory.invoke())
                 .build()
         }
 

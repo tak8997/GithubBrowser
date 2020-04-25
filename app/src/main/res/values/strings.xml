@@ -5,5 +5,8 @@
     <string name="search">Search</string>
     <string name="favorites">Favorites</string>
 
-    <string name="search_count">search count : %s</string>
+    <string name="search_count">search count : %d</string>
+    <string name="repo_name">repo name : %s</string>
+    <string name="repo_desc">repo description : %s</string>
+    <string name="star_count">star count : %d</string>
 </resources>
