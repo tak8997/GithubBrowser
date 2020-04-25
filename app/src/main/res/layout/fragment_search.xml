@@ -21,6 +21,7 @@
             android:layout_marginTop="12dp"
             android:layout_marginRight="10dp"
             android:hint="enter keyword"
+            android:onTextChanged='@{(s,start,end,before) -> viewModel.searchRepos(s.toString ?? "")}'
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -35,7 +36,7 @@
             app:layout_constraintTop_toBottomOf="@+id/et_search_query" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_search_repos"
+            android:id="@+id/rv_repo"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
