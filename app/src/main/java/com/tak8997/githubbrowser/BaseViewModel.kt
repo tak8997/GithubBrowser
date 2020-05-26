@@ -14,19 +14,29 @@ open class BaseViewModel : ViewModel() {
     val error = MutableLiveData<String>()
     val networkError = MutableLiveData<String>()
 
-    fun <T> launchDataLoaded(action: suspend CoroutineScope.() -> Result<T>, onSuccess: (T?) -> Unit): Job {
+    fun <T> launchDataLoaded(action: suspend CoroutineScope.() -> Result<T>): T? {
 
-        return viewModelScope.launch {
+        var result: T? = null
+
+        viewModelScope.launch {
 
             dataLoading.value = true
             action().let {
-                when(it) {
-                    is Result.Success -> onSuccess(it.data)
-                    is Result.Error -> error.value = "error"
-                    is Result.NetworkError -> networkError.value = "network error"
+                result = when(it) {
+                    is Result.Success -> it.data
+                    is Result.Error -> {
+                        error.value = "error"
+                        null
+                    }
+                    is Result.NetworkError -> {
+                        networkError.value = "network error"
+                        null
+                    }
                 }
                 dataLoading.value = false
             }
         }
+
+        return result
     }
 }

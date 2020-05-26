@@ -12,14 +12,14 @@ internal class SearchViewModel @Inject constructor(
 ) : BaseViewModel() {
 
     val repos = MutableLiveData<List<Repo>>()
-    val searchCount = MutableLiveData(0)
+    val searchTotalCount = MutableLiveData(0)
 
     fun searchRepos(query: String) {
-        launchDataLoaded({
+        launchDataLoaded {
             repository.searchRepos(query)
-        }, onSuccess = {
+        }.also {
             repos.value = it?.searchResults?.mapToDomain()
-            searchCount.value = it?.totalCount
-        })
+            searchTotalCount.value = it?.totalCount
+        }
     }
 }

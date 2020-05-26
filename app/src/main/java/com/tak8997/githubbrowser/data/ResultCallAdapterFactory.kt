@@ -1,6 +1,5 @@
 package com.tak8997.githubbrowser.data
 
-import android.util.Log
 import okhttp3.Request
 import retrofit2.*
 import java.io.IOException
@@ -26,7 +25,6 @@ class ResultCallAdapterFactory : CallAdapter.Factory() {
             when (getRawType(callType)) {
                 Result::class.java -> {
                     val resultType = getParameterUpperBound(0, callType as ParameterizedType)
-                    Log.d("MY_LOG", "resultType : $resultType{}")
                     ResultAdapter(resultType)
                 }
                 else -> null
@@ -35,7 +33,7 @@ class ResultCallAdapterFactory : CallAdapter.Factory() {
         else -> null
     }
 }
-
+//GoldMovies
 class ResultAdapter(
     private val type: Type
 ): CallAdapter<Type, Call<Result<Type>>> {
@@ -46,14 +44,10 @@ class ResultAdapter(
 
 class ResultCall<T>(proxy: Call<T>) : CallDelegate<T, Result<T>>(proxy) {
 
-    init {
-        Log.d("MY_LOG", "2")
-    }
-
     override fun enqueueImpl(callback: Callback<Result<T>>) = proxy.enqueue(object: Callback<T> {
 
         override fun onResponse(call: Call<T>, response: Response<T>) {
-            Log.d("MY_LOG", "3")
+
             val code = response.code()
             val result = if (code in 200 until 300) {
                 Result.Success(response.body())

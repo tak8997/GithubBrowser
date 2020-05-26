@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@{@string/search_count(viewModel.searchCount)}"
+            android:text="@{@string/search_count(viewModel.searchTotalCount)}"
             app:layout_constraintLeft_toLeftOf="@+id/et_search_query"
             app:layout_constraintTop_toBottomOf="@+id/et_search_query" />
 
